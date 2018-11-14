@@ -1,0 +1,66 @@
+
+int LEDpin = 13;
+int OnTime;
+int OffTime;
+String wm1 = "Pin State";
+String wm2 = " : ";
+String wm3;
+String on = "Enter On time : ";
+String off = "Enter Off time : ";
+int i=1;
+
+void setup ()
+{
+  Serial.begin(9600);
+  pinMode(LEDpin, OUTPUT);
+  wm3=wm1+wm2;
+
+  Serial.println(on);
+  while(Serial.available()==0) 
+              { // Wait for User to Input Data  
+              }
+   OnTime=Serial.parseInt();
+    Serial.print(on);
+    Serial.println(OnTime);
+    
+    Serial.println(off);
+   while(Serial.available()==0) 
+              { // Wait for User to Input Data  
+               }
+   OffTime=Serial.parseInt();
+    Serial.print(off);
+    Serial.println(OffTime);
+    Serial.println(wm3);
+}
+
+  void loop ()
+  {
+/*    Serial.println(on);
+   while(Serial.available()==0) { // Wait for User to Input Data  
+  }
+   OnTime=Serial.parseInt();
+
+    Serial.println(on);
+   while(Serial.available()==0) { // Wait for User to Input Data  
+  }
+   OffTime=Serial.parseInt();
+  */ 
+   //
+   while (i<6)
+   {
+   
+    digitalWrite(13, HIGH);
+   delay(OnTime);
+   Serial.println(HIGH);
+   //Serial.print(wm3);
+    digitalWrite(13, LOW);
+   Serial.println(LOW);
+   delay(OffTime); 
+   i++;
+  //  Serial.print(wm3);
+   }
+   
+  // pinMode(LEDpin, INPUT_PULLUP);
+    }
+
+    
